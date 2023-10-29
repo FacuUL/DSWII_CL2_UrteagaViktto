@@ -99,4 +99,25 @@ public class ProductoController {
         return new ResponseEntity<>("El producto con el Id Nro. " + id + " ha sido eliminado.", HttpStatus.OK);
     }
 
+
+    @GetMapping("/cantidad-entre-10-y-100")
+    public ResponseEntity<List<Producto>> obtenerProductosCantidadEntre10y100() {
+        List<Producto> productos = productoService.obtenerProductosCantidadEntre10y100();
+
+        if (productos.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(productos, HttpStatus.OK);
+    }
+
+    @GetMapping("/vencimiento-en-2024")
+    public ResponseEntity<List<Producto>> obtenerProductosConVencimientoEn2024() {
+        List<Producto> productos = productoService.obtenerProductosConVencimientoEn2024();
+
+        if (productos.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(productos, HttpStatus.OK);
+    }
+
 }

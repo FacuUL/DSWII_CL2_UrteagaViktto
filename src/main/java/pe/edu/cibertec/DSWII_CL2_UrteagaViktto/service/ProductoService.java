@@ -7,7 +7,7 @@ import pe.edu.cibertec.DSWII_CL2_UrteagaViktto.model.bd.Producto;
 import pe.edu.cibertec.DSWII_CL2_UrteagaViktto.repository.ProductoRepository;
 @Service
 @AllArgsConstructor
-public class ProductoService {
+public abstract class ProductoService {
     private ProductoRepository productoRepository;
 
     public List<Producto> listarProductos(){
@@ -39,4 +39,8 @@ public class ProductoService {
     public void eliminarProducto(Integer id) {
         productoRepository.deleteById(id);
     }
+
+    public abstract List<Producto> obtenerProductosCantidadEntre10y100();
+
+    public abstract List<Producto> obtenerProductosConVencimientoEn2024();
 }
