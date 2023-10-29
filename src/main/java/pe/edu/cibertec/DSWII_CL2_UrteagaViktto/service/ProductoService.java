@@ -35,4 +35,8 @@ public class ProductoService {
     public List<Producto> obtenerProductosPorFiltro(String filtro){
         return productoRepository.filtrarProductosPorNombreSQL(filtro);
     }
+
+    public void eliminarProducto(Integer id) {
+        productoRepository.deleteById(id);
+    }
 }

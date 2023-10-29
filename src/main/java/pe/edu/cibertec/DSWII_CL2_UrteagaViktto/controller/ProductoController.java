@@ -85,4 +85,18 @@ public class ProductoController {
                 productoService.guardar(oldProducto), HttpStatus.OK
         );
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> eliminarProducto(
+            @PathVariable("id") Integer id
+    ) {
+        Producto producto = productoService
+                .obtenerProductoPorId(id)
+                .orElseThrow(() -> new ResourceNotFoundException("El producto con el Id Nro. " + id + " no existe."));
+
+        productoService.eliminarProducto(id);
+
+        return new ResponseEntity<>("El producto con el Id Nro. " + id + " ha sido eliminado.", HttpStatus.OK);
+    }
+
 }
